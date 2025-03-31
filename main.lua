@@ -149,6 +149,5 @@ function love.draw()
         gameMap:drawLayer(gameMap.layers["Trees/Bushes"])
         love.graphics.pop()
         player.anim:draw(player.spriteSheet, player.x, player.y, nil, 5, nil, 6, 13)
-        world:draw()
     cam:detach()
 end
