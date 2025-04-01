@@ -45,7 +45,7 @@ function love.update(dt)
     if love.keyboard.isDown("s") then vy, player.anim, isMoving = player.speed * 1, player.animations.down, true end
     if love.keyboard.isDown("d") then vx, player.anim, isMoving = player.speed * 1, player.animations.right, true end
 
-    if love.keyboard.isDown("lshift") then vx, vy = vx * 2, vy * 2 end
+    if love.keyboard.isDown("lshift") then vx, vy = vx * 1.75, vy * 1.75 end
 
     player.collider:setLinearVelocity(vx, vy)
 
