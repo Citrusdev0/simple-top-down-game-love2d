@@ -38,13 +38,21 @@ end
 
 function love.update(dt)
     local isMoving = false
+    local isAttacking = false
+
+    if love.keyboard.isDown("space") then isAttacking = true end
 
     local vx, vy = 0, 0
 
-    if love.keyboard.isDown("a") then vx, player.anim, isMoving = player.speed * -1, player.animations.left, true end
-    if love.keyboard.isDown("w") then vy, player.anim, isMoving = player.speed * -1, player.animations.up, true end
-    if love.keyboard.isDown("s") then vy, player.anim, isMoving = player.speed * 1, player.animations.down, true end
-    if love.keyboard.isDown("d") then vx, player.anim, isMoving = player.speed * 1, player.animations.right, true end
+    if love.keyboard.isDown("a") and isAttacking == false then vx, player.anim, isMoving = player.speed * -1, player.animations.left, true end
+    if love.keyboard.isDown("w") and isAttacking == false then vy, player.anim, isMoving = player.speed * -1, player.animations.up, true end
+    if love.keyboard.isDown("s") and isAttacking == false then vy, player.anim, isMoving = player.speed * 1, player.animations.down, true end
+    if love.keyboard.isDown("d") and isAttacking == false then vx, player.anim, isMoving = player.speed * 1, player.animations.right, true end
+
+    if love.keyboard.isDown("a") and isAttacking == true then vx, player.anim, isMoving = player.speed * -0.25, player.animations.left, true end
+    if love.keyboard.isDown("w") and isAttacking == true then vy, player.anim, isMoving = player.speed * -0.25, player.animations.up, true end
+    if love.keyboard.isDown("s") and isAttacking == true then vy, player.anim, isMoving = player.speed * 0.25, player.animations.down, true end
+    if love.keyboard.isDown("d") and isAttacking == true then vx, player.anim, isMoving = player.speed * 0.25, player.animations.right, true end
 
     if love.keyboard.isDown("lshift") then vx, vy = vx * 1.75, vy * 1.75 end
 
